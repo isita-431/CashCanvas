@@ -1,10 +1,10 @@
 ## To Do
 
--   [Landing Page] Create a landing page for the application
--   [Login Page] Create a login page for the application
--   [Register Page] Create a register page for the application
--   [Dashboard] Create a dashboard for the application
--   [Profile Page] Create a profile page for the application
+- [Landing Page] Create a landing page for the application
+- [Login Page] Create a login page for the application
+- [Register Page] Create a register page for the application
+- [Dashboard] Create a dashboard for the application
+- [Profile Page] Create a profile page for the application
 
 ## Contributing Rules
 
@@ -32,3 +32,7 @@
 2. **Navigate** to the client folder
 3. **Run** `npm install` to install all the dependencies
 4. **Run** `npm start` to start the development server
+
+## Formatting the Code
+
+**Prettier** is used to format the code. Run `npm run format` to format the code.
