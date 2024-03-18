@@ -1,11 +1,10 @@
 ## To Do
 
-- [Landing Page] Create a landing page for the application
-- [Login Page] Create a login page for the application
-- [Register Page] Create a register page for the application
-- [Dashboard] Create a dashboard for the application
-- [Profile Page] Create a profile page for the application
-
+-   [Landing Page] Create a landing page for the application
+-   [Login Page] Create a login page for the application
+-   [Register Page] Create a register page for the application
+-   [Dashboard] Create a dashboard for the application
+-   [Profile Page] Create a profile page for the application
 
 ## Contributing Rules
 

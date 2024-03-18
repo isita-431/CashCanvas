@@ -2,30 +2,29 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  :root {
-    font-family: "Roboto Slab", sans-serif;
-  }
-  
-  html {
+}
+
+:root {
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+html {
     font-size: 16px;
-  }
-  
-  .App {
+}
+
+.App {
     padding: 0 10rem;
     background-color: $background-color-secondary;
     color: $font-color-main;
     min-height: 100vh;
-  }
-  
-  
+}
+
 @media (max-width: $max-width) {
     .App {
         padding: 0 0;
     }
 }
-  
+
 @media (max-width: $min-width) {
     html {
         font-size: 12px;
