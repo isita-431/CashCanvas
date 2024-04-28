@@ -1,9 +1,10 @@
 import React from 'react';
+import { HeadingTag } from './common_comp';
 
 export const About = () => {
   return (
     <div>
-      <h1>About</h1>
+      <HeadingTag>About</HeadingTag>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
         libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam

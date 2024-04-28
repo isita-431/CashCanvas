@@ -1,9 +1,11 @@
 import React from 'react';
+import { AppHeader, HeadingTag } from './common_comp';
 
 export const Main = () => {
   return (
-    <div>
-      <h1>Main Page</h1>
+    <AppHeader>
+      <HeadingTag>Take Control of Your Finances with Cash Canvas.</HeadingTag>
+      <HeadingTag>Manage, Track, and Save.</HeadingTag>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
         libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
@@ -81,7 +83,7 @@ export const Main = () => {
         justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
         nec ultricies justo. Nullam nec ultr
       </p>
-    </div>
+    </AppHeader>
   );
 };
 export default Main;

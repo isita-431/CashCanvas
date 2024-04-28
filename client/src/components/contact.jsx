@@ -1,9 +1,10 @@
 import React from 'react';
+import { HeadingTag } from './common_comp';
 
 export const Contact = () => {
   return (
     <div>
-      <h1>Contact</h1>
+      <HeadingTag>Contact</HeadingTag>
       <p>Our contact information is as follows:</p>
       <p>Email: </p>
       <p>Phone: </p>
