@@ -1,43 +1,122 @@
 import React from 'react';
-import { FormContainer, Input, SubmitButton } from './common_comp';
-import { Marginer } from './marginer';
 import {
-  BoxContainer,
-  HeaderContainer,
-  TopContainer,
-  BackDrop,
-  InnerContainer,
-  HeaderText,
-  SmallText
-} from './boxcontainer';
+  Container,
+  Title,
+  Subtitle,
+  Wrapper,
+  Form,
+  Input,
+  Label,
+  Button,
+  ForgotPassword
+} from './main/common_comp';
+import { useState } from 'react';
 
-// eslint-disable-next-line no-unused-vars
-export function Reset(props) {
+const initial_state = {
+  email: '',
+  password: ''
+};
+
+export function Reset() {
+  const [state, setState] = useState(initial_state);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setState((prev) => ({ ...prev, [name]: value }));
+    console.log(state);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTimeout(() => {
+      console.log(state);
+    }, 100);
+    setState(initial_state);
+  };
+
+  const transition = {
+    duration: 0.5,
+    type: 'spring',
+    damping: 20,
+    stiffness: 100
+  };
+
   return (
-    <>
-      <BoxContainer>
-        <TopContainer>
-          <BackDrop />
-          <HeaderContainer>
-            <HeaderText>Welcome To</HeaderText>
-            <HeaderText>CashCanvas</HeaderText>
-            <SmallText>Please reset your password to continue</SmallText>
-          </HeaderContainer>
-        </TopContainer>
-        <InnerContainer>
-          <FormContainer>
-            <Input type="email" placeholder="Email" />
-            <Input type="password" placeholder="Password" />
-            <Input type="password" placeholder="Confirm Password" />
-          </FormContainer>
-          <Marginer direction="vertical" margin={10} />
-          <Marginer direction="vertical" margin="1.6em" />
-          <SubmitButton type="submit">Reset</SubmitButton>
-          <Marginer direction="vertical" margin="1em" />
-        </InnerContainer>
-      </BoxContainer>
-    </>
+    <Container>
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        Welcome To Cash Canvas
+      </Title>
+      <Subtitle
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        Please reset your password
+      </Subtitle>
+      <ForgotPassword
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        <span>Not a user?</span>
+        <a href="signup">Signup</a>
+      </ForgotPassword>
+      <Wrapper>
+        <Form
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={transition}
+          onSubmit={handleSubmit}
+        >
+          <Label>Enter your Email</Label>
+          <Input
+            type="email"
+            name="email"
+            value={state.email}
+            onChange={handleInputChange}
+            placeholder="email"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
+          />
+          <Label>Enter your Password</Label>
+          <Input
+            type="password"
+            name="password"
+            value={state.password}
+            onChange={handleInputChange}
+            placeholder="password"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
+          />
+          <Label>Confirm your Password</Label>
+          <Input
+            type="password"
+            name="confirmPassword"
+            placeholder="confirm Password"
+            value={state.confirmPassword}
+            onChange={handleInputChange}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
+          />
+          <Button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="submit"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={transition}
+          >
+            Submit
+          </Button>
+        </Form>
+      </Wrapper>
+    </Container>
   );
 }
-
-export default Reset;

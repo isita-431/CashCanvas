@@ -7,7 +7,8 @@ import Contact from './components/contact';
 import About from './components/about';
 import Main from './components/main';
 import { Reset } from './components/reset';
-import { AccountBox } from './components/boxcontainer';
+import { LoginForm } from './components/login';
+// import { AccountBox } from './components/boxcontainer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Dashboard } from './components/dashboard';
 // import Login from './components/login';
@@ -18,7 +19,7 @@ const App = () => {
       <Navigation />
       <Routes>
         <Route path="/main" element={<Main />} />
-        <Route path="/login" element={<AccountBox />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />

@@ -1,60 +1,136 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  BoldLink,
-  FormContainer,
+  Container,
+  Title,
+  Subtitle,
+  Wrapper,
+  Form,
   Input,
-  MutedLink,
-  SubmitButton
-} from './common_comp';
-import { Marginer } from './marginer';
-import { CenteredContainer } from './common_comp';
-import {
-  BoxContainer,
-  HeaderContainer,
-  TopContainer,
-  BackDrop,
-  InnerContainer,
-  HeaderText,
-  SmallText
-} from './boxcontainer';
+  Label,
+  Button,
+  ForgotPassword
+} from './main/common_comp';
 
-// import { AccountContext } from './accountContext';
+const initial_state = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+};
 
-// eslint-disable-next-line no-unused-vars
-export function signup(props) {
-  // const { switchToSignup } = useContext(AccountContext);
+export default function Signup() {
+  const [state, setState] = useState(initial_state);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setState((prev) => ({ ...prev, [name]: value }));
+    console.log(state);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(state);
+    setTimeout(() => {
+      console.log(state);
+    }, 100);
+    setState(initial_state);
+  };
+
+  const transition = {
+    duration: 0.5,
+    type: 'spring',
+    damping: 20,
+    stiffness: 100
+  };
+
   return (
-    <>
-      <BoxContainer>
-        <TopContainer>
-          <BackDrop />
-          <HeaderContainer>
-            <HeaderText>Welcome To</HeaderText>
-            <HeaderText>CashCanvas</HeaderText>
-            <SmallText>Please sign-up to continue!</SmallText>
-          </HeaderContainer>
-        </TopContainer>
-        <InnerContainer>
-          <FormContainer>
-            <Input type="text" placeholder="Your Name" />
-            <Input type="email" placeholder="Email" />
-            <Input type="password" placeholder="Password" />
-            <Input type="password" placeholder="Confirm Password" />
-          </FormContainer>
-          <Marginer direction="vertical" margin={10} />
-          <Marginer direction="vertical" margin="1.6em" />
-          <SubmitButton type="submit">Reset</SubmitButton>
-          <Marginer direction="vertical" margin="1em" />
-          <CenteredContainer>
-            <MutedLink href="#">
-              Already a member?
-              <BoldLink href="login"> Signin</BoldLink>
-            </MutedLink>
-          </CenteredContainer>
-        </InnerContainer>
-      </BoxContainer>
-    </>
+    <Container>
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        Welcome To Cash Canvas
+      </Title>
+      <Subtitle
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        Please sign-up to continue
+      </Subtitle>
+      <ForgotPassword
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        <span>Already a user?</span>
+        <a href="login">Sign-in</a>
+      </ForgotPassword>
+      <Wrapper>
+        <Form
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={transition}
+          onSubmit={handleSubmit}
+        >
+          <Label>Enter your name</Label>
+          <Input
+            type="text"
+            name="name"
+            placeholder="username"
+            value={state.name} // Corrected state property name
+            onChange={handleInputChange}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
+          />
+          <Label>Enter your email</Label>
+          <Input
+            type="email"
+            name="email"
+            placeholder="email"
+            value={state.email}
+            onChange={handleInputChange}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
+          />
+          <Label>Enter your Password</Label>
+          <Input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={state.password}
+            onChange={handleInputChange}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
+          />
+          <Label>Confirm Password</Label>
+          <Input
+            type="password"
+            name="confirmPassword"
+            placeholder="confirm password"
+            value={state.confirmPassword}
+            onChange={handleInputChange}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
+          />
+
+          <Button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="submit"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={transition}
+          >
+            Submit
+          </Button>
+        </Form>
+      </Wrapper>
+    </Container>
   );
 }
-
-export default signup;

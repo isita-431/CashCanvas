@@ -1,10 +1,10 @@
 import React from 'react';
-import { HeadingTag } from './common_comp';
+import { CustomH1 } from './main/custom_h1_component/custom_h1';
 
 export const About = () => {
   return (
     <div>
-      <HeadingTag>About</HeadingTag>
+      <CustomH1 data="About"></CustomH1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
         libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam

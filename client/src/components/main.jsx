@@ -1,89 +1,24 @@
 import React from 'react';
-import { AppHeader, HeadingTag } from './common_comp';
+import { CustomH1 } from './main/custom_h1_component/custom_h1';
+import BackgroundWithDollarSigns from './main/background_with_dollar_signs';
+import Features from './features_section';
+import { useState, useEffect } from 'react';
+import JsonData from '../store/data.json';
 
-export const Main = () => {
+const Main = () => {
+  const [landingPageData, setLandingPageData] = useState({});
+  useEffect(() => {
+    setLandingPageData(JsonData);
+  }, []);
+
   return (
-    <AppHeader>
-      <HeadingTag>Take Control of Your Finances with Cash Canvas.</HeadingTag>
-      <HeadingTag>Manage, Track, and Save.</HeadingTag>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-        libero ac nisl fermentum ultricies. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultricies justo. Nullam nec ultricies
-        justo. Nullam nec ultricies justo. Nullam nec ultricies justo. Nullam
-        nec ultricies justo. Nullam nec ultr
-      </p>
-    </AppHeader>
+    <div>
+      <BackgroundWithDollarSigns />
+      <CustomH1 data="Take Control of Your Finances with Cash Canvas" />
+      <CustomH1 data="Manage, Track, and Save" />
+      <Features data={landingPageData.Features} />
+    </div>
   );
 };
+
 export default Main;

@@ -1,81 +1,117 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import {
-  BoldLink,
-  BoxContainer,
-  FormContainer,
+  Container,
+  Title,
+  Subtitle,
+  Wrapper,
+  Form,
   Input,
-  MutedLink,
-  SubmitButton
-} from './common_comp';
-import { Marginer } from './marginer';
-import { CenteredContainer } from './common_comp';
+  Label,
+  Button,
+  ForgotPassword
+} from './main/common_comp';
 import { useState } from 'react';
-import styled from 'styled-components';
-
-const FieldContainer = styled.div`
-  border: 0.5px solid #ccc;
-  padding: 1em;
-  margin-bottom: 1em;
-`;
 
 const initial_state = {
   email: '',
   password: ''
 };
 
-// eslint-disable-next-line no-unused-vars
-export function LoginForm(props) {
-  // const { switchToSignup } = useContext(AccountContext);
+export function LoginForm() {
   const [state, setState] = useState(initial_state);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState((prev) => ({ ...prev, [name]: value }));
     console.log(state);
   };
-  const clear_state = () => {
-    setState(initial_state);
-  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setTimeout(() => {
       console.log(state);
     }, 100);
+    setState(initial_state);
+  };
+
+  const transition = {
+    duration: 0.5,
+    type: 'spring',
+    damping: 20,
+    stiffness: 100
   };
 
   return (
-    <>
-      <FormContainer onSubmit={handleSubmit}>
-        <FieldContainer>
+    <Container>
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        Welcome To Cash Canvas
+      </Title>
+      <Subtitle
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        Please sign-in to continue
+      </Subtitle>
+      <ForgotPassword
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        <span>Not a user?</span>
+        <a href="signup">Signup</a>
+      </ForgotPassword>
+      <Wrapper>
+        <Form
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={transition}
+          onSubmit={handleSubmit}
+        >
+          <Label>Please enter your email</Label>
           <Input
             type="email"
-            placeholder="Email"
             name="email"
+            value={state.email}
             onChange={handleInputChange}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
           />
+          <Label>Please enter your Password</Label>
           <Input
             type="password"
-            placeholder="Password"
             name="password"
+            value={state.password}
             onChange={handleInputChange}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={transition}
           />
-        </FieldContainer>
-        <Marginer direction="vertical" margin="1em" />
-        {/* <Marginer direction="vertical" margin="1.6em" /> */}
-        <CenteredContainer>
-          <MutedLink href="#">
-            Forgot your password? <BoldLink href="reset">Reset it</BoldLink>
-          </MutedLink>
-        </CenteredContainer>
-        <SubmitButton type="submit">Signin</SubmitButton>
-        {/* <Marginer direction="vertical" margin="1em" /> */}
-      </FormContainer>
-      <CenteredContainer>
-        <MutedLink href="#">
-          Not a member?
-          <BoldLink href="signup">Signup</BoldLink>
-        </MutedLink>
-      </CenteredContainer>
-    </>
+          <Button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="submit"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={transition}
+          >
+            Submit
+          </Button>
+        </Form>
+      </Wrapper>
+      <ForgotPassword
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={transition}
+      >
+        <span>Forgot Password?</span>
+        <a href="reset">reset</a>
+      </ForgotPassword>
+    </Container>
   );
 }
