@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-const User = require("../database/models/user.model");
+const jwt = require('jsonwebtoken');
+const User = require('../database/models/user.model');
 
 const auth = (req, res, next) => {
   const { cookies } = req;
@@ -10,26 +10,26 @@ const auth = (req, res, next) => {
       req.token = cookies.jwt;
 
       const user = User.findOne({ _id: data.id });
-        if (!user) {
-            return res.status(401).send({
-            success: false,
-            message: "Sorry you are not authenticated.",
-            });
-        }
+      if (!user) {
+        return res.status(401).send({
+          success: false,
+          message: 'Sorry you are not authenticated.'
+        });
+      }
       req.user = user;
       return next();
     } catch (error) {
       console.log(error.message);
       return res.status(401).send({
         success: false,
-        message: "Sorry you are not authenticated.",
+        message: 'Sorry you are not authenticated.'
       });
     }
   }
 
   return res.status(401).send({
     success: false,
-    message: "Sorry you are not authenticated.",
+    message: 'Sorry you are not authenticated.'
   });
 };
 

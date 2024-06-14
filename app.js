@@ -1,15 +1,15 @@
 // Initializing the environment variables
 require('dotenv').config();
-require("./database/connection");
+require('./database/connection');
 
 const express = require('express');
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const plaidRouter = require('./routes/plaid');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const auth = require('./middleware/auth');
-const User = require("./database/models/user.model");
+const User = require('./database/models/user.model');
 const app = express();
 const port = process.env.PORT || 8000;
 const frontendUrl = process.env.FRONTEND_URL;
@@ -18,7 +18,7 @@ const frontendUrl = process.env.FRONTEND_URL;
 app.use(
   cors({
     origin: frontendUrl,
-    credentials: true,
+    credentials: true
   })
 );
 app.use(express.json());
@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 app.get('/', (req, res) => {
   res.send('Server is running successfully!');
-})
+});
 
 // Routes
 app.use(signupRouter);

@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const url =
-  process.env.NODE_ENV !== "production"
+  process.env.NODE_ENV !== 'production'
     ? process.env.DEV_MONGO_URL
     : process.env.PROD_MONGO_URL;
 
 const db = mongoose
   .connect(url)
   .then(() => {
-    console.log("Connected to the mongodb database");
+    console.log('Connected to the mongodb database');
   })
   .catch((error) => {
     console.log(error.name);

@@ -1,38 +1,38 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // User Schema
 const UserSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: true
     },
 
     password: {
       type: String,
-      required: true,
+      required: true
     },
 
     email: {
       type: String,
       required: true,
       unique: true,
-      dropDups: true,
+      dropDups: true
     },
     tokens: [
       {
         token: {
-          type: String,
-        },
-      },
+          type: String
+        }
+      }
     ],
     transactions: []
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
@@ -40,9 +40,9 @@ const UserSchema = new Schema(
 Below code runs before the user is saved. 
 It hashes the password if the password is changed. 
 */
-UserSchema.pre("save", async function (next) {
+UserSchema.pre('save', async function (next) {
   const user = this;
-  if (!user.isModified("password")) {
+  if (!user.isModified('password')) {
     next();
     return;
   }
@@ -54,7 +54,7 @@ UserSchema.pre("save", async function (next) {
 UserSchema.methods.generateAuthToken = async function () {
   const user = this;
   const token = jwt.sign({ id: user._id }, process.env.SECRET, {
-    expiresIn: "7d",
+    expiresIn: '7d'
   });
   user.tokens = user.tokens.concat({ token });
   await user.save();
@@ -64,8 +64,8 @@ UserSchema.methods.generateAuthToken = async function () {
 // Generates a profile by removing sensitive information
 UserSchema.methods.getPublicProfile = function () {
   const user = this.toObject();
-  delete user["password"];
-  delete user["tokens"];
+  delete user['password'];
+  delete user['tokens'];
   return user;
 };
 
@@ -74,18 +74,18 @@ UserSchema.statics.findByCredentials = async ({ email, password }) => {
 
   if (!user) {
     throw new Error(
-      "Sorry the credentials you entered do not match. Please try again."
+      'Sorry the credentials you entered do not match. Please try again.'
     );
   }
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
     throw new Error(
-      "Sorry the credentials you entered do not match. Please try again."
+      'Sorry the credentials you entered do not match. Please try again.'
     );
   }
   return user;
 };
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
